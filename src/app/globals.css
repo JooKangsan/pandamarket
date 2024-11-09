@@ -6,7 +6,7 @@
   @font-face {
     font-family: "Pretendard";
     font-style: normal;
-    src: url("../../public/font/PretendardVariable.ttf") format("truetype");
+    src: url("./fonts/PretendardVariable.ttf") format("truetype");
   }
 
   * {
