@@ -1,0 +1,34 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🔍 commit 이전에 prettier, lint 규칙을 적용합니다..."
+
+# YARN_ENABLE_IMMUTABLE_INSTALLS 환경변수 설정
+export YARN_ENABLE_IMMUTABLE_INSTALLS=false
+
+# lint-staged 실행
+yarn lint-staged
+if [ $? -ne 0 ]; then
+    echo "❌ lint-staged 실행 중 오류가 발생했습니다."
+    exit 1
+fi
+
+# PnP 환경에서 git 명령어 실행
+changed_files=$(git diff --name-only --staged --diff-filter=d)
+if [ $? -ne 0 ]; then
+    echo "❌ 변경된 파일을 가져오는 중 오류가 발생했습니다."
+    exit 1
+fi
+
+# 파일 재스테이징 (경로 검사 추가)
+for file in $changed_files; do
+    if [ -f "$file" ]; then
+        # 상대 경로 처리를 위한 프로젝트 루트 경로 사용
+        git add "$(git rev-parse --show-toplevel)/$file"
+    fi
+done
+
+# Yarn Berry 캐시 정리 (선택적)
+yarn cache clean
+
+echo "✅ 모든 prettier, lint 규칙이 성공적으로 적용되었습니다."
