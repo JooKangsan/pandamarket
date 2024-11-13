@@ -43,7 +43,7 @@ function Home() {
       </div>
       <Banner
         text1="믿을 수 있는"
-        text2="판다마켓 중고거래"
+        text3="판다마켓 중고거래"
         src="/images/Img_home_bottom.png"
         alt="로고"
       />

@@ -9,9 +9,7 @@ function HomeRootLayout({
   return (
     <>
       <Header />
-      <main className="mb-[100px] mt-[60px] flex flex-col items-center">
-        {children}
-      </main>
+      <main className="mt-[60px] flex flex-col items-center">{children}</main>
       <Footer />
     </>
   );

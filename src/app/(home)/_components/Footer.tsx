@@ -47,7 +47,7 @@ const socialMediaLinks = [
 
 function Footer() {
   return (
-    <footer className="fixed bottom-0 flex flex-col w-full h-40 justify-between bg-[#111322] p-8">
+    <footer className="bottom-0 flex flex-col w-full h-40 justify-between bg-[#111322] p-8">
       <div className="w-full flex justify-between">
         <p className="hidden tablet:block text-gray-500">@codeit - 2024</p>
         <div className="flex justify-between items-center gap-8">
